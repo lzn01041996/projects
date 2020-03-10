@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大数据需求占比</title>
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/series-label.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="container" style="max-width:800px;height:400px"></div>
+<script>
+    new Vue({
+        el: '#container',
+        data(){
+            return {
+                data: null
+            }
+        },
+        mounted(){
+            const instance = axios({
+                post: "get",
+                url: 'http://localhost:8081/visual/pie',
+            })
+            instance.then(function (response) {
+                let data = response.data;
+                console.log(data);
+            })
+        }
+    })
+</script>
+</body>
+</html>
